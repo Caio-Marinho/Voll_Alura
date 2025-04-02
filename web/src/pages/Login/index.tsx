@@ -46,14 +46,23 @@ const BotaoCustomizado = styled(Botao)`
   width: 50%;
 `;
 
+const ContainerFilho = styled.div`
+width: 100%;
+heeight: 100vh;
+padding: 5em 0;
+display: flex;
+flex-direction: column;
+align-items: center;
+`
+
 interface ILogin  {
   email: string,
   senha: string
 }
 
 export default function Login() {
-    const [email, setEmail] = useState('');
-    const [senha, setSenha] = useState('');
+    const [email, setEmail] = useState<string>('');
+    const [senha, setSenha] = useState<string>('');
     const {cadastrarDados, erro, sucesso, resposta} = usePost();
     const navigate = useNavigate();
 
@@ -75,7 +84,7 @@ export default function Login() {
     }
 
     return (
-        <>
+        <ContainerFilho>
         <Imagem src={logo} alt="Logo da Voll" />
         <Titulo>Faça login em sua conta</Titulo>
         <Formulario onSubmit={handleLogin}>
@@ -85,6 +94,6 @@ export default function Login() {
         </Formulario>
         <Paragrafo>Esqueceu sua senha?</Paragrafo>
         <ParagrafoCadastro>Ainda não tem conta? <LinkCustomizado to="/cadastro">Faça seu cadastro!</LinkCustomizado></ParagrafoCadastro>
-        </>  
+        </ContainerFilho>  
     )
 }

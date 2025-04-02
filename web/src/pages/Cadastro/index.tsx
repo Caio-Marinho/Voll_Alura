@@ -17,7 +17,7 @@ interface PropsCustomizadas {
 }
 
 const StepCustomizada = styled.div<PropsCustomizadas>`
-    background-color: ${({cor}) => cor};
+    background-color: ${({ cor }) => cor};
     width: 16px;
     height: 16px;
     border-radius: 50%;
@@ -25,7 +25,7 @@ const StepCustomizada = styled.div<PropsCustomizadas>`
 
 const Titulo = styled.h2`
   font-weight: 700;
-  font-size: 24px;
+  font-size: 15px;
   line-height: 28px;
   color: var(--cinza);
 `;
@@ -62,13 +62,13 @@ export default function Cadastro() {
     const [numero, setNumero] = useState('');
     const [estado, setEstado] = useState('');
     const [complemento, setComplemento] = useState('');
-    const {cadastrarDados, erro, sucesso} = usePost();
+    const { cadastrarDados, erro, sucesso } = usePost();
     const navigate = useNavigate();
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault(); // previne o envio padrão do formulário
 
-      
+
         const clinica: IClinica = {
             email: email,
             nome: nome,
@@ -84,7 +84,7 @@ export default function Cadastro() {
 
         if (etapaAtiva !== 0) {
             try {
-                cadastrarDados({url: 'clinica', dados: clinica});
+                cadastrarDados({ url: 'clinica', dados: clinica });
                 navigate('/login');
             } catch (erro) {
                 erro && alert('Erro ao cadastrar os dados')
@@ -97,25 +97,25 @@ export default function Cadastro() {
 
     return (
         <>
-        <Imagem src={logo} alt="Logo da Voll" />
-        <Stepper activeStep={etapaAtiva}>
-            <Step>
-                <StepLabel 
-                StepIconComponent={(props) => (
-                    <StepCustomizada cor={props.active ? 'lightblue' : 'lightgray'} />
-                )}
-                />
-            </Step>
-            <Step>
-            <StepLabel 
-                StepIconComponent={(props) => (
-                    <StepCustomizada cor={props.active ? 'lightblue' : 'lightgray'} />
-                )}
-                />
-            </Step>
-        </Stepper>
+            <Imagem src={logo} alt="Logo da Voll" />
+            <Stepper activeStep={etapaAtiva}>
+                <Step>
+                    <StepLabel
+                        StepIconComponent={(props) => (
+                            <StepCustomizada cor={props.active ? 'lightblue' : 'lightgray'} />
+                        )}
+                    />
+                </Step>
+                <Step>
+                    <StepLabel
+                        StepIconComponent={(props) => (
+                            <StepCustomizada cor={props.active ? 'lightblue' : 'lightgray'} />
+                        )}
+                    />
+                </Step>
+            </Stepper>
 
-        {etapaAtiva === 0 ? (
+            {etapaAtiva === 0 ? (
                 <>
                     <Titulo>Primeiro, alguns dados básicos:</Titulo>
                     <Formulario onSubmit={handleSubmit}>
@@ -204,9 +204,9 @@ export default function Cadastro() {
                         <BotaoCustomizado type="submit">Cadastrar</BotaoCustomizado>
                     </Formulario>
                 </>
+            )
+
+            }
+        </>
     )
-    
-} 
-</> 
-)
 }
